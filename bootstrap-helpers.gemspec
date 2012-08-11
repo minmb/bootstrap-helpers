@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "bootstrap-helpers"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["mcasimir"]
@@ -14,6 +14,15 @@ Gem::Specification.new do |s|
   s.email = "maurizio.cas@gmail.com"
   s.extra_rdoc_files = [
     "README.md"
+  ]
+  s.files = [
+    "Gemfile",
+    "Gemfile.lock",
+    "README.md",
+    "Rakefile",
+    "VERSION",
+    "bootstrap-helpers.gemspec",
+    "lib/bootstrap-helpers.rb"
   ]
   s.homepage = "http://github.com/mcasimir/kaminari-bootstrap"
   s.licenses = ["MIT"]
