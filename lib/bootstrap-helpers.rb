@@ -125,10 +125,11 @@ module BootstrapHelpers
     
   def navbar(*args, &block)
     opts = args.extract_options!
+    fluid = opts.delete(:fluid)
     html = <<-STR
     <div class="navbar#{opts[:fixed].present? ? ' navbar-fixed-' + opts[:fixed].to_s : ''}">
       <div class="navbar-inner">
-        <div class="#{bootstrap_container_class}">
+        <div class="#{fluid ? 'container-fluid' : 'container'}">
           #{capture(&block)}
         </div>
       </div>
