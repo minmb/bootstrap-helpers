@@ -69,8 +69,11 @@ module BootstrapHelpers
       
   end
     
-  def icon(icon_id)
-    "<i class=\"icon icon-#{icon_id}\"></i>".html_safe
+  def icon(icon_id, opts={})
+    opts[:class] ||= ""
+    opts[:class] << " icon icon-#{icon_id}"
+    opts[:class].strip!
+    tag :i, opts
   end
   
   # ============
