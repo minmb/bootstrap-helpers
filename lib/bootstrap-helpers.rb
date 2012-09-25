@@ -283,15 +283,17 @@ module BootstrapHelpers
       @opts = opts
     end
 
-    def pane(title, &block)
+    def pane(title, pane_id = nil, &block)
       css_class =  (@first && @opts[:open]) ? 'in' : ''
+      pane_id ||= "#{title.parameterize}_pane" 
+      
       @first = false
       content_tag :div, :class => 'accordion-group' do
         heading = content_tag :div, :class => 'accordion-heading' do
-          link_to title, "##{title.parameterize}_pane", :class => 'accordion-toggle', :'data-toggle' => 'collapse',
+          link_to title, "##{pane_id}", :class => 'accordion-toggle', :'data-toggle' => 'collapse',
           :'data-parent' => "##{@opts[:accordion_id]}"
         end
-        body = content_tag :div, :class => "accordion-body collapse #{css_class}", :id => "#{title.parameterize}_pane" do
+        body = content_tag :div, :class => "accordion-body collapse #{css_class}", :id => "#{pane_id}" do
           content_tag :div, :class => 'accordion-inner' do
             capture(&block)
           end
