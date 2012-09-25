@@ -237,11 +237,12 @@ module BootstrapHelpers
       @pane_contents = []
     end
 
-    def pane title, &block
+    def pane(title, pane_id = nil, &block)
+      pane_id ||= "#{title.parameterize}_tab"
       css_class, @first = 'active', false if @first
-      link = content_tag(:a, title, :'data-toggle' => 'tab', :href => "##{title.parameterize}_tab")
+      link = content_tag(:a, title, :'data-toggle' => 'tab', :href => "##{pane_id}")
       @pane_handles << content_tag(:li, link, :class => css_class)
-      @pane_contents << (content_tag :div, :class => "tab-pane #{css_class}", :id => "#{title.parameterize}_tab" do
+      @pane_contents << (content_tag :div, :class => "tab-pane #{css_class}", :id => "#{pane_id}" do
         capture(&block)
       end)
       nil
