@@ -112,7 +112,12 @@ module BootstrapHelpers
 
   alias :btn :button
   
-  
+  def button_group(&block)
+    content_tag :div, :class => "btn-group", &block
+  end
+
+  alias :btn_group :button_group
+
   def form_actions(&block)
     content_tag :div, :class => "form-actions", &block
   end
