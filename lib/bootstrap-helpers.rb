@@ -25,35 +25,18 @@ module BootstrapHelpers
   # ============
   # = Scaffold =
   # ============
-
-  def bootstrap_container_class
-    bootstrap_fluid? ? "container-fluid" : "container"
-  end
-    
-  def bootstrap_row_class
-    bootstrap_fluid? ? "row-fluid" : "row"
-  end
-
-  def bootstrap_fluid!
-    @bootstrap_float_style = true
-  end
-
-  def bootstrap_fluid?
-    !!@bootstrap_float_style
-  end
     
   def container(opts = {}, &block)
-    if opts.delete(:fluid)
-      bootstrap_fluid!
-    end
-      
-    opts[:class] = ("#{opts[:class]}".split(" ") + [bootstrap_container_class]).join(" ")   
+    container_class = opts[:fluid] ? "container-fluid" : "container"
+    opts = opts.except(:fluid).merge(:class => "#{container_class} #{opts[:class]}".strip)
+
     content_tag("div", opts, &block)
   end
 
   def row(opts = {}, &block)
+    row_class = opts[:fluid] ? "row-fluid" : "row"
+    opts = opts.except(:fluid).merge(:class => "#{row_class} #{opts[:class]}".strip)
 
-    opts[:class] = ("#{opts[:class]}".split(" ") + [bootstrap_row_class]).join(" ")
     content_tag("div", opts, &block)      
   end
         

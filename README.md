@@ -28,7 +28,7 @@
 <% end %> 
 ```
 
-Passing `:fluid => true` to `container` will set the layout to fluid and thus rows will be builded accordingly as `row-fluid`.
+Passing `:fluid => true` to `container` or `row` will render them with `.container-fluid` and `.row-fluid`.
 
 ### Base CSS
 
